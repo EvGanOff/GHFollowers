@@ -43,7 +43,7 @@ class SearchViewController: UIViewController {
 
     @objc func pushFollowrListViewConrolller() {
         guard isUserNameEturned != true else {
-            print("No userName")
+            presentsGFAlertControllerOnMainTread(title: "Вы не вввели имя", massage: "Пожалуйста введите имя! Нам необходимо знать, кого искать 😀", buttonTitle: "Оки")
             return
 
         }

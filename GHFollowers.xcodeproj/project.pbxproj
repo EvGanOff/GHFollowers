@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E36A99627F3BDD6004CE803 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */; };
 		5EAFD8FA27DDCD9200DD9FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD8F927DDCD9200DD9FB2 /* AppDelegate.swift */; };
 		5EAFD8FC27DDCD9200DD9FB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD8FB27DDCD9200DD9FB2 /* SceneDelegate.swift */; };
 		5EAFD8FE27DDCD9200DD9FB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD8FD27DDCD9200DD9FB2 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		5EAFD8F627DDCD9200DD9FB2 /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAFD8F927DDCD9200DD9FB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAFD8FB27DDCD9200DD9FB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				5EAFD8F927DDCD9200DD9FB2 /* AppDelegate.swift */,
 				5EAFD8FB27DDCD9200DD9FB2 /* SceneDelegate.swift */,
+				5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */,
 				5EAFD91127E5F6CD00DD9FB2 /* Controllers */,
 				5EAFD90227DDCD9400DD9FB2 /* Assets.xcassets */,
 				5EAFD90427DDCD9400DD9FB2 /* LaunchScreen.storyboard */,
@@ -84,7 +87,6 @@
 		5EAFD91127E5F6CD00DD9FB2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */,
 				5EAFD90D27DDD76900DD9FB2 /* SearchViewController.swift */,
 				5EC3D18E27E75AFD009E5F5B /* FolloverListViewController.swift */,
 				5EAFD90F27DDD8AA00DD9FB2 /* FavoritesListViewController.swift */,
@@ -100,6 +102,7 @@
 				5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */,
 				5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */,
 				5EAFD91227E6067600DD9FB2 /* GFButton.swift */,
+				5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				5EAFD91027DDD8AA00DD9FB2 /* FavoritesListViewController.swift in Sources */,
 				5EAFD8FE27DDCD9200DD9FB2 /* ViewController.swift in Sources */,
+				5E36A99627F3BDD6004CE803 /* UIViewController+Ext.swift in Sources */,
 				5EAFD91327E6067600DD9FB2 /* GFButton.swift in Sources */,
 				5EAFD8FA27DDCD9200DD9FB2 /* AppDelegate.swift in Sources */,
 				5EAFD90E27DDD76900DD9FB2 /* SearchViewController.swift in Sources */,
