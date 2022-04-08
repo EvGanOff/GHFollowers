@@ -23,6 +23,7 @@
 		5EC3D18F27E75AFD009E5F5B /* FolloverListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D18E27E75AFD009E5F5B /* FolloverListViewController.swift */; };
 		5EC3D19127E7745F009E5F5B /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */; };
 		5EC3D19427E77A9C009E5F5B /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */; };
+		5EED53FE27FF25FA0044CA2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EED53FD27FF25FA0044CA2F /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5EC3D18E27E75AFD009E5F5B /* FolloverListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolloverListViewController.swift; sourceTree = "<group>"; };
 		5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
+		5EED53FD27FF25FA0044CA2F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		5EAFD8F827DDCD9200DD9FB2 /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				5EED53FC27FF25DA0044CA2F /* Managers */,
 				5E36A99A27F4A0B7004CE803 /* Sourse */,
 				5E36A99927F4A077004CE803 /* Resourse */,
 				5EAFD90727DDCD9400DD9FB2 /* Info.plist */,
@@ -151,6 +154,14 @@
 				5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		5EED53FC27FF25DA0044CA2F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5EED53FD27FF25FA0044CA2F /* NetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				5E36A99627F3BDD6004CE803 /* UIViewController+Ext.swift in Sources */,
 				5EAFD91327E6067600DD9FB2 /* GFButton.swift in Sources */,
 				5EAFD8FA27DDCD9200DD9FB2 /* AppDelegate.swift in Sources */,
+				5EED53FE27FF25FA0044CA2F /* NetworkManager.swift in Sources */,
 				5EAFD90E27DDD76900DD9FB2 /* SearchViewController.swift in Sources */,
 				5E36A99F27F4A653004CE803 /* User.swift in Sources */,
 				5EB9E48C27E7F9BC00E828D4 /* GFAlertVC.swift in Sources */,
