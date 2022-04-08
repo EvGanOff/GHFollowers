@@ -17,16 +17,15 @@ class FolloverListViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         // Наш Singlton для запроса в сеть
-        NetworkManager.shared.getFollowes(userName: userName, page: 1) { followers, errorMessage in
-            guard let follower = followers else {
-                self.presentsGFAlertControllerOnMainTread(title: "Bad stuff", massage: errorMessage!, buttonTitle: "OK")
-                return
+        NetworkManager.shared.getFollowes(userName: userName, page: 1) { result in
+            switch result {
+            case .success(let followers):
+                print(followers)
+            case .failure(let error):
+                self.presentsGFAlertControllerOnMainTread(title: "Bad stuff", massage: error.rawValue, buttonTitle: "OK")
+
             }
-
-            print("Количество подписчиков = \(followers?.count ?? 0)")
-            print(followers ?? [])
         }
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
