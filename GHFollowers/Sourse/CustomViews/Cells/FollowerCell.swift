@@ -25,11 +25,13 @@ class FollowerCell: UICollectionViewCell {
 
     func set(follower: Follower) {
         userNameLabel.text = follower.login
+        avatarImageView.downloadAvatarImage(from: follower.avatarUrl)
     }
 
     private func configure() {
         addSubview(avatarImageView)
         addSubview(userNameLabel)
+
 
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(
@@ -51,7 +53,7 @@ class FollowerCell: UICollectionViewCell {
 
     struct Matrics {
         static let padding: CGFloat = 8
-        static let userNameLabelPadding: CGFloat = 12
+        static let userNameLabelPadding: CGFloat = 10
         static let userNameLabelHeightAnchorPadding: CGFloat = 20
     }
 

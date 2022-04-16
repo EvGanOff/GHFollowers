@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
 Для работы с сетью будем использовать Singlton
@@ -15,7 +16,8 @@ import Foundation
 
 class NetworkManager {
     static let shared = NetworkManager()
-    let baseURL = "https://api.github.com"
+    private let baseURL = "https://api.github.com"
+    let cash = NSCache<NSString, UIImage>()
 
     private init() {}
 
