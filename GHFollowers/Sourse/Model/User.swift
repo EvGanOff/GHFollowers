@@ -8,20 +8,17 @@
 import Foundation
 import UIKit
 
-struct User: Codable  {
+struct User: Codable, Hashable  {
     var login: String
     var avatarUrl: String
-
     var name: String?
     var location: String?
     var bio: String?
-
-    var publicReps: Int
+    var publicRepos: Int
     var publicGists: Int
-    
     var htmlUrl: String
     var following: Int
     var followers: Int
-    var createAt: String
+    var createdAt: String
 }
 

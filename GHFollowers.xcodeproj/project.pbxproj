@@ -10,6 +10,7 @@
 		5E36A99627F3BDD6004CE803 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */; };
 		5E36A99D27F4A596004CE803 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99C27F4A596004CE803 /* Follower.swift */; };
 		5E36A99F27F4A653004CE803 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99E27F4A653004CE803 /* User.swift */; };
+		5E9031C1280AF4BB00BDB871 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E9031C0280AF4BB00BDB871 /* UIHelper.swift */; };
 		5EAFD8FA27DDCD9200DD9FB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD8F927DDCD9200DD9FB2 /* AppDelegate.swift */; };
 		5EAFD8FC27DDCD9200DD9FB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD8FB27DDCD9200DD9FB2 /* SceneDelegate.swift */; };
 		5EAFD8FE27DDCD9200DD9FB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD8FD27DDCD9200DD9FB2 /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 		5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		5E36A99C27F4A596004CE803 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		5E36A99E27F4A653004CE803 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5E9031C0280AF4BB00BDB871 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		5EAFD8F627DDCD9200DD9FB2 /* GHFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GHFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EAFD8F927DDCD9200DD9FB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EAFD8FB27DDCD9200DD9FB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				5EED54002800282C0044CA2F /* ErrorMessage.swift */,
+				5E9031C0280AF4BB00BDB871 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				5EAFD8FC27DDCD9200DD9FB2 /* SceneDelegate.swift in Sources */,
 				5EC3D19127E7745F009E5F5B /* GFTitleLabel.swift in Sources */,
 				5EED54012800282C0044CA2F /* ErrorMessage.swift in Sources */,
+				5E9031C1280AF4BB00BDB871 /* UIHelper.swift in Sources */,
 				5EC3D18F27E75AFD009E5F5B /* FolloverListViewController.swift in Sources */,
 				5EC3D18D27E62B59009E5F5B /* GFTextField.swift in Sources */,
 				5EC3D19427E77A9C009E5F5B /* GFBodyLabel.swift in Sources */,
