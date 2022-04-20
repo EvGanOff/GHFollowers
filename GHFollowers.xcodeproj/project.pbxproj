@@ -28,6 +28,7 @@
 		5EED54012800282C0044CA2F /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EED54002800282C0044CA2F /* ErrorMessage.swift */; };
 		5EED5404280044B10044CA2F /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EED5403280044B10044CA2F /* FollowerCell.swift */; };
 		5EED5407280047820044CA2F /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EED5406280047820044CA2F /* GFAvatarImageView.swift */; };
+		5EFF093328107CF0002FBA94 /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFF093228107CF0002FBA94 /* GFEmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		5EED54002800282C0044CA2F /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		5EED5403280044B10044CA2F /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		5EED5406280047820044CA2F /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		5EFF093228107CF0002FBA94 /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,14 +192,63 @@
 		5EED5405280044C60044CA2F /* CustomUIViewElements */ = {
 			isa = PBXGroup;
 			children = (
-				5EED5406280047820044CA2F /* GFAvatarImageView.swift */,
-				5EC3D18C27E62B59009E5F5B /* GFTextField.swift */,
-				5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */,
-				5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */,
-				5EAFD91227E6067600DD9FB2 /* GFButton.swift */,
-				5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */,
+				5EFF093128107CB7002FBA94 /* Views */,
+				5EFF092F28107C37002FBA94 /* ImageViews */,
+				5EFF092D28107C08002FBA94 /* TextFields */,
+				5EFF092C28107BE9002FBA94 /* Labels */,
+				5EFF092E28107C26002FBA94 /* Buttons */,
+				5EFF093028107C48002FBA94 /* ViewControllers */,
 			);
 			path = CustomUIViewElements;
+			sourceTree = "<group>";
+		};
+		5EFF092C28107BE9002FBA94 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */,
+				5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		5EFF092D28107C08002FBA94 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				5EC3D18C27E62B59009E5F5B /* GFTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		5EFF092E28107C26002FBA94 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				5EAFD91227E6067600DD9FB2 /* GFButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		5EFF092F28107C37002FBA94 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				5EED5406280047820044CA2F /* GFAvatarImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		5EFF093028107C48002FBA94 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5EFF093128107CB7002FBA94 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5EFF093228107CF0002FBA94 /* GFEmptyStateView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +334,7 @@
 				5EB9E48C27E7F9BC00E828D4 /* GFAlertVC.swift in Sources */,
 				5E36A99D27F4A596004CE803 /* Follower.swift in Sources */,
 				5EAFD8FC27DDCD9200DD9FB2 /* SceneDelegate.swift in Sources */,
+				5EFF093328107CF0002FBA94 /* GFEmptyStateView.swift in Sources */,
 				5EC3D19127E7745F009E5F5B /* GFTitleLabel.swift in Sources */,
 				5EED54012800282C0044CA2F /* ErrorMessage.swift in Sources */,
 				5E9031C1280AF4BB00BDB871 /* UIHelper.swift in Sources */,

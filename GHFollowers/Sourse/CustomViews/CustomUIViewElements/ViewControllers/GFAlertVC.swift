@@ -100,16 +100,13 @@ class GFAlertVC: UIViewController {
    @objc func dismissVC() {
         dismiss(animated: true)
     }
-}
-
-
-
-struct Metrics {
-    static let containerViewWidthAnchor: CGFloat = 300
-    static let containerViewHeightAnchor: CGFloat = 220
-    static let titleLabelPadding: CGFloat = 20
-    static let actionButtonPadding: CGFloat = 20
-    static let massageLabelPadding: CGFloat = 20
-    static let titleLabelHeightAnchor: CGFloat = 30
-
+    
+    private struct Metrics {
+        static let containerViewWidthAnchor: CGFloat = 300
+        static let containerViewHeightAnchor: CGFloat = 220
+        static let titleLabelPadding: CGFloat = 20
+        static let actionButtonPadding: CGFloat = 20
+        static let massageLabelPadding: CGFloat = 20
+        static let titleLabelHeightAnchor: CGFloat = 30
+    }
 }

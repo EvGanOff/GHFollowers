@@ -47,11 +47,12 @@ class FolloverListViewController: UIViewController {
     }
 
     func getFollowers(userName: String, page: Int) {
+        showLoadingView()
 
         // Наш Singlton для запроса в сеть
         NetworkManager.shared.getFollowes(userName: userName, page: page ) { [weak self] result in
             guard let self = self else { return }
-
+            self.dissmisLoadingView()
             switch result {
             case .success(let followers):
                 if followers.count < 100   {
@@ -59,8 +60,15 @@ class FolloverListViewController: UIViewController {
                 }
 
                 self.followers.append(contentsOf: followers)
-                self.updateData()
+                if self.followers.isEmpty {
+                    let message = "К сожалению, у пользователя нет подписчиков 😕, но вы можете стать первым 😉."
+                    DispatchQueue.main.async {
+                        self.showEmptyStateView(with: message, in: self.view)
+                    }
+                    return
+                }
 
+                self.updateData()
             case .failure(let error):
                 self.presentsGFAlertControllerOnMainTread(title: "Bad stuff", massage: error.rawValue, buttonTitle: "OK")
 
