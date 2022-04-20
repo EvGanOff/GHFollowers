@@ -35,27 +35,25 @@ class FollowerCell: UICollectionViewCell {
 
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(
-                equalTo: contentView.topAnchor, constant: Matrics.padding),
+                equalTo: contentView.topAnchor, constant: Metrics.padding),
             avatarImageView.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor, constant: Matrics.padding),
+                equalTo: contentView.leadingAnchor, constant: Metrics.padding),
             avatarImageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor, constant: -Matrics.padding),
+                equalTo: contentView.trailingAnchor, constant: -Metrics.padding),
             avatarImageView.heightAnchor.constraint(
                 equalTo: avatarImageView.widthAnchor),
 
             userNameLabel.topAnchor.constraint(
-                equalTo: avatarImageView.bottomAnchor, constant: Matrics.userNameLabelPadding),
-            userNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Matrics.padding),
-            userNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Matrics.padding),
-            userNameLabel.heightAnchor.constraint(equalToConstant: Matrics.userNameLabelHeightAnchorPadding)
+                equalTo: avatarImageView.bottomAnchor, constant: Metrics.userNameLabelPadding),
+            userNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Metrics.padding),
+            userNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Metrics.padding),
+            userNameLabel.heightAnchor.constraint(equalToConstant: Metrics.userNameLabelHeightAnchorPadding)
         ])
     }
 
-    struct Matrics {
+    private struct Metrics {
         static let padding: CGFloat = 8
         static let userNameLabelPadding: CGFloat = 10
         static let userNameLabelHeightAnchorPadding: CGFloat = 20
     }
-
-    
 }
