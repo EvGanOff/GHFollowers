@@ -16,6 +16,7 @@ class FolloverListViewController: UIViewController {
     var followers: [Follower] = []
     var userName: String! = nil
     var page = 1
+    var filteredFollowers: [Follower] = []
     var hasMoreFollower = true
     var collectionView: UICollectionView!
     var collectionDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -31,6 +32,7 @@ class FolloverListViewController: UIViewController {
         configureCollectionCell()
         getFollowers(userName: userName, page: page)
         configureDataSource()
+        configureSearchController()
     }
 
     func configureViewController() {
@@ -44,6 +46,15 @@ class FolloverListViewController: UIViewController {
         collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.userID)
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
+    }
+
+    func configureSearchController() {
+        let searchController = UISearchController()
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Найти"
+        searchController.obscuresBackgroundDuringPresentation = false
+        navigationItem.searchController = searchController
     }
 
     func getFollowers(userName: String, page: Int) {
@@ -68,7 +79,7 @@ class FolloverListViewController: UIViewController {
                     return
                 }
 
-                self.updateData()
+                self.updateData(on: self.followers)
             case .failure(let error):
                 self.presentsGFAlertControllerOnMainTread(title: "Bad stuff", massage: error.rawValue, buttonTitle: "OK")
 
@@ -105,7 +116,7 @@ extension FolloverListViewController {
         }
     }
 
-    func updateData() {
+    func updateData(on followers: [Follower]) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
@@ -114,5 +125,20 @@ extension FolloverListViewController {
             self.collectionDataSource.apply(snapshot, animatingDifferences: true)
 
         }
+    }
+}
+
+// MARK: - SearchController
+extension FolloverListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
+
+        filteredFollowers = followers.filter({ $0.login.lowercased().contains(filter.lowercased()) })
+        updateData(on: filteredFollowers)
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+         updateData(on: followers)
     }
 }
