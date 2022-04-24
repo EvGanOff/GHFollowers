@@ -9,23 +9,28 @@ import UIKit
 
 class InfoVC: UIViewController {
 
-    private lazy var headerView: UIView = {
-        let headerView = UIView()
-        headerView.backgroundColor = .systemGray5
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        headerView.layer.cornerRadius = 10
+    var itemViews: [UIView] = []
 
-        return headerView
-    }()
+    let headerView = UIView()
+    let itemViewOne = UIView()
+    let itemViewTwo = UIView()
 
     var userName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureVC()
+        layoutUI()
+        getUserInfo()
+    }
+
+    func configureVC() {
         view.backgroundColor = .systemBackground
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector (dissmisVC))
         navigationItem.rightBarButtonItem = cancelButton
-        layoutUI()
+    }
+
+    func getUserInfo() {
 
         NetworkManager.shared.getUserInfo(userName: userName) { [weak self] result in
             guard let self = self else { return }
@@ -43,14 +48,32 @@ class InfoVC: UIViewController {
     }
 
     func layoutUI() {
-        view.addSubview(headerView)
         let padding: CGFloat = 20
+        let heightAnchor: CGFloat = 140
+        itemViews = [headerView, itemViewOne, itemViewTwo]
+        itemViews.forEach { views in
+            view.addSubview(views)
+            views.translatesAutoresizingMaskIntoConstraints = false
+            views.layer.cornerRadius = 10
+
+            NSLayoutConstraint.activate([
+                views.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+                views.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding)
+            ])
+        }
+
+        itemViewOne.backgroundColor = .systemPink
+        itemViewTwo.backgroundColor = .systemBlue
 
         NSLayoutConstraint.activate([
             headerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-            headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            headerView.heightAnchor.constraint(equalToConstant: 180)
+            headerView.heightAnchor.constraint(equalToConstant: 180),
+
+            itemViewOne.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: padding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: heightAnchor),
+
+            itemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: heightAnchor),
         ])
     }
 
