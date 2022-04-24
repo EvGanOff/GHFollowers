@@ -39,9 +39,9 @@ class FollowerCell: UICollectionViewCell {
             avatarImageView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor, constant: Metrics.padding),
             avatarImageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor, constant: -Metrics.padding),
-            avatarImageView.heightAnchor.constraint(
-                equalTo: avatarImageView.widthAnchor),
+                equalTo: contentView.trailingAnchor,
+                constant: -Metrics.padding),
+            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
 
             userNameLabel.topAnchor.constraint(
                 equalTo: avatarImageView.bottomAnchor, constant: Metrics.userNameLabelPadding),

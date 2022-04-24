@@ -20,6 +20,7 @@ class FolloverListViewController: UIViewController {
     var hasMoreFollower = true
     var collectionView: UICollectionView!
     var collectionDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
+    var isSearching = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,7 +89,7 @@ class FolloverListViewController: UIViewController {
     }
 }
 
-    // MARK: - CollectionViewDataSource
+    // MARK: - ScrollView
 extension FolloverListViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
@@ -100,6 +101,17 @@ extension FolloverListViewController: UICollectionViewDelegate {
             page += 1
             getFollowers(userName: userName, page: page)
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray = isSearching ? filteredFollowers : followers
+        let follower = activeArray[indexPath.item]
+
+
+        let destVC = InfoVC()
+        destVC.userName = follower.login
+        let navigation = UINavigationController(rootViewController: destVC)
+        present(navigation, animated: true)
     }
 }
 
@@ -134,11 +146,13 @@ extension FolloverListViewController: UISearchResultsUpdating, UISearchBarDelega
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
 
+        isSearching = true
         filteredFollowers = followers.filter({ $0.login.lowercased().contains(filter.lowercased()) })
         updateData(on: filteredFollowers)
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-         updateData(on: followers)
+        isSearching = false
+        updateData(on: followers)
     }
 }
