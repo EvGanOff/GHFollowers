@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5E1998DA28182A1F00FD723A /* GFItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1998D928182A1F00FD723A /* GFItemInfoView.swift */; };
+		5E1998DC2818323000FD723A /* GFItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1998DB2818323000FD723A /* GFItemInfoVC.swift */; };
 		5E36A99627F3BDD6004CE803 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */; };
 		5E36A99D27F4A596004CE803 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99C27F4A596004CE803 /* Follower.swift */; };
 		5E36A99F27F4A653004CE803 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36A99E27F4A653004CE803 /* User.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		5E1998D928182A1F00FD723A /* GFItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoView.swift; sourceTree = "<group>"; };
+		5E1998DB2818323000FD723A /* GFItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFItemInfoVC.swift; sourceTree = "<group>"; };
 		5E36A99527F3BDD6004CE803 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		5E36A99C27F4A596004CE803 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		5E36A99E27F4A653004CE803 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */,
 				5E90A1322815CCAC00C3F6DF /* GFUserInfoHeaderVC.swift */,
+				5E1998DB2818323000FD723A /* GFItemInfoVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				5EAFD91327E6067600DD9FB2 /* GFButton.swift in Sources */,
 				5E90A131281561D700C3F6DF /* InfoVC.swift in Sources */,
 				5EAFD8FA27DDCD9200DD9FB2 /* AppDelegate.swift in Sources */,
+				5E1998DC2818323000FD723A /* GFItemInfoVC.swift in Sources */,
 				5E90A1352815CEC700C3F6DF /* GFSecondaryTitleLabel.swift in Sources */,
 				5EED53FE27FF25FA0044CA2F /* NetworkManager.swift in Sources */,
 				5EAFD90E27DDD76900DD9FB2 /* SearchViewController.swift in Sources */,
