@@ -7,13 +7,26 @@
 
 import UIKit
 
+ // Супер класс для GFRepoItemVC и GFFollowerItemInfo
+
 class GFItemInfoVC: UIViewController {
 
     let stackView = UIStackView()
     let itemInfoViewFirst = GFItemInfoView()
-    let itemInfoVieSecond = GFItemInfoView()
+    let itemInfoViewSecond = GFItemInfoView()
     let actionButton = GFButton()
 
+    var user: User!
+
+    init(user: User) {
+        super.init(nibName: nil, bundle: nil)
+        self.user = user
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackgroundView()
@@ -28,10 +41,9 @@ class GFItemInfoVC: UIViewController {
 
     private func configureStackView() {
         stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-//        stackView.spacing =
+        stackView.distribution = .equalCentering
         stackView.addArrangedSubview(itemInfoViewFirst)
-        stackView.addArrangedSubview(itemInfoVieSecond)
+        stackView.addArrangedSubview(itemInfoViewSecond)
     }
 
     private func layoutUI() {
@@ -39,6 +51,8 @@ class GFItemInfoVC: UIViewController {
         view.addSubview(actionButton)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.layer.cornerRadius = 10
         let padding:CGFloat = 20
 
         NSLayoutConstraint.activate([
@@ -51,9 +65,6 @@ class GFItemInfoVC: UIViewController {
             actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             actionButton.heightAnchor.constraint(equalToConstant: 45)
-
-            
         ])
     }
-    
 }
