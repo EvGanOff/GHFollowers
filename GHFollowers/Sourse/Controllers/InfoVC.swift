@@ -14,6 +14,7 @@ class InfoVC: UIViewController {
     let headerView = UIView()
     let itemViewFirst = UIView()
     let itemViewSecond = UIView()
+    let dateLabel = GFBodyLabel(textAligment: .center)
 
     var userName: String!
 
@@ -41,6 +42,7 @@ class InfoVC: UIViewController {
                     self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
                     self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewFirst)
                     self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewSecond)
+                    self.dateLabel.text = user.createdAt.convertToDisplayFormat()
                 }
 
             case .failure(let error):
@@ -52,7 +54,7 @@ class InfoVC: UIViewController {
     func layoutUI() {
         let padding: CGFloat = 20
         let heightAnchor: CGFloat = 140
-        itemViews = [headerView, itemViewFirst, itemViewSecond]
+        itemViews = [headerView, itemViewFirst, itemViewSecond, dateLabel]
         itemViews.forEach { views in
             view.addSubview(views)
             views.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +75,9 @@ class InfoVC: UIViewController {
 
             itemViewSecond.topAnchor.constraint(equalTo: itemViewFirst.bottomAnchor, constant: padding),
             itemViewSecond.heightAnchor.constraint(equalToConstant: heightAnchor),
+
+            dateLabel.topAnchor.constraint(equalTo: itemViewSecond.bottomAnchor, constant: padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
 
