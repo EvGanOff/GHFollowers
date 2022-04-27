@@ -32,7 +32,6 @@ class FollowerCell: UICollectionViewCell {
         addSubview(avatarImageView)
         addSubview(userNameLabel)
 
-
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor, constant: Metrics.padding),
