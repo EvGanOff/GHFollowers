@@ -1,5 +1,5 @@
 //
-//  FolloverListViewController.swift
+//  FollowerListViewController.swift
 //  GHFollowers
 //
 //  Created by Евгений Ганусенко on 3/20/22.
@@ -7,7 +7,11 @@
 
 import UIKit
 
-class FolloverListViewController: UIViewController {
+protocol FollowerListVCDelegate: AnyObject {
+    func didRequestFollowers(for userName: String)
+}
+
+class FollowerListViewController: UIViewController {
 
     enum Section {
         case main
@@ -90,7 +94,7 @@ class FolloverListViewController: UIViewController {
 }
 
     // MARK: - ScrollView
-extension FolloverListViewController: UICollectionViewDelegate {
+extension FollowerListViewController: UICollectionViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let offsetY = scrollView.contentOffset.y
         let contentHeigth = scrollView.contentSize.height
@@ -110,6 +114,7 @@ extension FolloverListViewController: UICollectionViewDelegate {
 
         let destVC = InfoVC()
         destVC.userName = follower.login
+        destVC.delegate = self
         let navigation = UINavigationController(rootViewController: destVC)
         present(navigation, animated: true)
     }
@@ -117,7 +122,7 @@ extension FolloverListViewController: UICollectionViewDelegate {
 
 
     // MARK: - CollectionViewDataSource
-extension FolloverListViewController {
+extension FollowerListViewController {
 
     func configureDataSource() {
         collectionDataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView) { collectionView, indexPath, follower in
@@ -141,7 +146,7 @@ extension FolloverListViewController {
 }
 
 // MARK: - SearchController
-extension FolloverListViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FollowerListViewController: UISearchResultsUpdating, UISearchBarDelegate {
 
     func updateSearchResults(for searchController: UISearchController) {
         guard let filter = searchController.searchBar.text, !filter.isEmpty else { return }
@@ -154,5 +159,19 @@ extension FolloverListViewController: UISearchResultsUpdating, UISearchBarDelega
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         updateData(on: followers)
+    }
+}
+
+extension FollowerListViewController: FollowerListVCDelegate {
+    func didRequestFollowers(for userName: String) {
+        // подписчики юзера обновление таблицы
+        self.userName = userName
+        title = userName
+        page = 1
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(userName: userName, page: page)
+        navigationController?.navigationBar.tintColor = .systemPurple
     }
 }
