@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol InfoVCDelegate: AnyObject {
+    func didTabGitHubProfile(for user: User)
+    func didTabGetFollowers(for user: User)
+}
+
 class InfoVC: UIViewController {
 
     var itemViews: [UIView] = []
@@ -17,6 +22,7 @@ class InfoVC: UIViewController {
     let dateLabel = GFBodyLabel(textAligment: .center)
 
     var userName: String!
+    weak var delegate: FollowerListVCDelegate!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,16 +45,26 @@ class InfoVC: UIViewController {
             switch result {
             case .success(let user):
                 DispatchQueue.main.async {
-                    self.add(childVC: GFUserInfoHeaderVC(user: user), to: self.headerView)
-                    self.add(childVC: GFRepoItemVC(user: user), to: self.itemViewFirst)
-                    self.add(childVC: GFFollowerItemVC(user: user), to: self.itemViewSecond)
-                    self.dateLabel.text = user.createdAt.convertToDisplayFormat()
+                    self.configureIUIElements(with: user)
                 }
 
             case .failure(let error):
                 self.presentsGFAlertControllerOnMainTread(title: "Что-то пошло не так", massage: error.rawValue, buttonTitle: "OK")
             }
         }
+    }
+
+    func configureIUIElements(with user: User) {
+        let repoItemVC = GFRepoItemVC(user: user)
+        repoItemVC.delegate = self
+
+        let followerItemVC = GFFollowerItemVC(user: user)
+        followerItemVC.delegate = self
+
+        self.add(childVC: repoItemVC, to: itemViewFirst)
+        self.add(childVC: followerItemVC, to: itemViewSecond)
+        self.add(childVC: GFUserInfoHeaderVC(user: user), to: headerView)
+        self.dateLabel.text = user.createdAt.convertToDisplayFormat()
     }
 
     func layoutUI() {
@@ -91,5 +107,28 @@ class InfoVC: UIViewController {
 @objc
     func dissmisVC() {
         dismiss(animated: true)
+    }
+}
+
+extension InfoVC: InfoVCDelegate {
+
+    func didTabGitHubProfile(for user: User) {
+        // показать Safari view controller
+        guard let url = URL(string: user.htmlUrl) else { presentsGFAlertControllerOnMainTread(title: "Invalid URL", massage: "This url attached to this user is invalid.", buttonTitle: "OK")
+            return
+        }
+        presenSafariVC(from: url)
+        
+    }
+
+    func didTabGetFollowers(for user: User) {
+        // dismiss view controller
+        // tell follower list screen with new follower
+        guard user.followers != 0 else {
+            presentsGFAlertControllerOnMainTread(title: "No followers", massage: "У пользователя нет подписчиков 😔.", buttonTitle: "Фигово")
+            return
+        }
+        delegate.didRequestFollowers(for: user.login)
+        dissmisVC()
     }
 }

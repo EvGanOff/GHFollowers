@@ -30,7 +30,7 @@
 		5EAFD91327E6067600DD9FB2 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAFD91227E6067600DD9FB2 /* GFButton.swift */; };
 		5EB9E48C27E7F9BC00E828D4 /* GFAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */; };
 		5EC3D18D27E62B59009E5F5B /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D18C27E62B59009E5F5B /* GFTextField.swift */; };
-		5EC3D18F27E75AFD009E5F5B /* FolloverListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D18E27E75AFD009E5F5B /* FolloverListViewController.swift */; };
+		5EC3D18F27E75AFD009E5F5B /* FollowerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D18E27E75AFD009E5F5B /* FollowerListViewController.swift */; };
 		5EC3D19127E7745F009E5F5B /* GFTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */; };
 		5EC3D19427E77A9C009E5F5B /* GFBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */; };
 		5EED53FE27FF25FA0044CA2F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EED53FD27FF25FA0044CA2F /* NetworkManager.swift */; };
@@ -66,7 +66,7 @@
 		5EAFD91227E6067600DD9FB2 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		5EB9E48B27E7F9BC00E828D4 /* GFAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAlertVC.swift; sourceTree = "<group>"; };
 		5EC3D18C27E62B59009E5F5B /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
-		5EC3D18E27E75AFD009E5F5B /* FolloverListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolloverListViewController.swift; sourceTree = "<group>"; };
+		5EC3D18E27E75AFD009E5F5B /* FollowerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListViewController.swift; sourceTree = "<group>"; };
 		5EC3D19027E7745F009E5F5B /* GFTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTitleLabel.swift; sourceTree = "<group>"; };
 		5EC3D19327E77A9C009E5F5B /* GFBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBodyLabel.swift; sourceTree = "<group>"; };
 		5EED53FD27FF25FA0044CA2F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				5E36A99827F4A04E004CE803 /* Extensions */,
 				5E36A99B27F4A577004CE803 /* Model */,
 				5EC3D19227E7793C009E5F5B /* CustomViews */,
-				5EAFD91127E5F6CD00DD9FB2 /* Controllers */,
+				5EAFD91127E5F6CD00DD9FB2 /* Main Controllers */,
 			);
 			path = Sourse;
 			sourceTree = "<group>";
@@ -182,15 +182,15 @@
 			path = GHFollowers;
 			sourceTree = "<group>";
 		};
-		5EAFD91127E5F6CD00DD9FB2 /* Controllers */ = {
+		5EAFD91127E5F6CD00DD9FB2 /* Main Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5EAFD90D27DDD76900DD9FB2 /* SearchViewController.swift */,
-				5EC3D18E27E75AFD009E5F5B /* FolloverListViewController.swift */,
+				5EC3D18E27E75AFD009E5F5B /* FollowerListViewController.swift */,
 				5EAFD90F27DDD8AA00DD9FB2 /* FavoritesListViewController.swift */,
 				5E90A130281561D700C3F6DF /* InfoVC.swift */,
 			);
-			path = Controllers;
+			path = "Main Controllers";
 			sourceTree = "<group>";
 		};
 		5EC3D19227E7793C009E5F5B /* CustomViews */ = {
@@ -388,7 +388,7 @@
 				5EC3D19127E7745F009E5F5B /* GFTitleLabel.swift in Sources */,
 				5EED54012800282C0044CA2F /* ErrorMessage.swift in Sources */,
 				5E9031C1280AF4BB00BDB871 /* UIHelper.swift in Sources */,
-				5EC3D18F27E75AFD009E5F5B /* FolloverListViewController.swift in Sources */,
+				5EC3D18F27E75AFD009E5F5B /* FollowerListViewController.swift in Sources */,
 				5EC3D18D27E62B59009E5F5B /* GFTextField.swift in Sources */,
 				5EC3D19427E77A9C009E5F5B /* GFBodyLabel.swift in Sources */,
 				5E1998DE281837BB00FD723A /* GFRepoItemVC.swift in Sources */,
