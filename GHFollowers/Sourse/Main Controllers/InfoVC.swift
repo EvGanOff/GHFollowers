@@ -104,8 +104,8 @@ class InfoVC: UIViewController {
         childVC.didMove(toParent: self)
     }
 
-@objc
-    func dissmisVC() {
+
+    @objc func dissmisVC() {
         dismiss(animated: true)
     }
 }
@@ -117,8 +117,8 @@ extension InfoVC: InfoVCDelegate {
         guard let url = URL(string: user.htmlUrl) else { presentsGFAlertControllerOnMainTread(title: "Invalid URL", massage: "This url attached to this user is invalid.", buttonTitle: "OK")
             return
         }
+
         presenSafariVC(from: url)
-        
     }
 
     func didTabGetFollowers(for user: User) {
