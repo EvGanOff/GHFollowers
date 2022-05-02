@@ -43,6 +43,9 @@ class FollowerListViewController: UIViewController {
     func configureViewController() {
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector (addButtonTapped))
+        navigationItem.rightBarButtonItem = addButton
     }
 
     func configureCollectionCell() {
@@ -60,6 +63,32 @@ class FollowerListViewController: UIViewController {
         searchController.searchBar.placeholder = "Найти"
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
+    }
+
+    @objc func addButtonTapped() {
+        print("Add Button was tapped")
+        //showLoadingView()
+
+        NetworkManager.shared.getUserInfo(userName: userName) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+
+                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+                    guard let self = self else { return }
+
+                    guard let error = error else {
+                        self.presentsGFAlertControllerOnMainTread(title: "Seccess!", massage: "Вы уже успешно добавили пользователя в избранные ⭐️.", buttonTitle: "ОК")
+                        return
+                    }
+
+                    self.presentsGFAlertControllerOnMainTread(title: "Что то пошло не так", massage: error.rawValue, buttonTitle: "ОК")
+                }
+            case .failure(let error):
+                self.presentsGFAlertControllerOnMainTread(title: "Что то пошло не так", massage: error.rawValue, buttonTitle: "ОК")
+            }
+        }
     }
 
     func getFollowers(userName: String, page: Int) {
