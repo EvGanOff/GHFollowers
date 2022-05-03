@@ -17,11 +17,12 @@ import UIKit
 class NetworkManager {
     static let shared = NetworkManager()
     private let baseURL = "https://api.github.com"
-    let cash = NSCache<NSString, UIImage>()
+    let cache = NSCache<NSString, UIImage>()
 
     private init() {}
 
-    func getFollowes(userName: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
+    final func getFollowes(userName: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
+
         // 1) Получить API
         let endpoint = baseURL + "/users/\(userName)/followers?per_page=100&page=\(page)"
 
@@ -62,7 +63,7 @@ class NetworkManager {
         task.resume()
     }
 
-    func getUserInfo(userName: String, completed: @escaping (Result<User, GFError>) -> Void) {
+    final func getUserInfo(userName: String, completed: @escaping (Result<User, GFError>) -> Void) {
         let endpoint = baseURL + "/users/\(userName)"
         guard let url = URL(string: endpoint) else {
             completed(.failure(.invaliedUserName))
@@ -88,9 +89,39 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
+                decoder.dateDecodingStrategy = .iso8601
                 let user = try decoder.decode(User.self, from: data)
                 completed(.success(user))
             } catch { completed(.failure(.invaliedData)) }
+        }
+
+        task.resume()
+    }
+
+    func downloadImage(frov urlString: String, copleted: @escaping (UIImage?) -> Void) {
+        let cacheKey = NSString(string: urlString)
+
+        if let image = cache.object(forKey: cacheKey) {
+            copleted(image)
+            return
+        }
+        guard let url = URL(string: urlString) else {
+            copleted(nil)
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self,
+                  error == nil,
+                  let data = data,
+                  let image = UIImage(data: data),
+                  let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                      copleted(nil)
+                      return
+            }
+
+            self.cache.setObject(image, forKey: cacheKey)
+            copleted(image)
         }
 
         task.resume()

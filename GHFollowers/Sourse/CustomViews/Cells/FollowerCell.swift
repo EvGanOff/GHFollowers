@@ -25,7 +25,12 @@ class FollowerCell: UICollectionViewCell {
 
     func set(follower: Follower) {
         userNameLabel.text = follower.login
-        avatarImageView.downloadAvatarImage(from: follower.avatarUrl)
+        NetworkManager.shared.downloadImage(frov: follower.avatarUrl) { [weak self] Image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.avatarImageView.image = Image
+            }
+        }
     }
 
     private func configure() {

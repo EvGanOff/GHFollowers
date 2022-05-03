@@ -12,7 +12,7 @@ protocol InfoVCDelegate: AnyObject {
     func didTabGetFollowers(for user: User)
 }
 
-class InfoVC: UIViewController {
+class InfoVC: GFDataLoadingVC {
 
     var itemViews: [UIView] = []
 
@@ -64,7 +64,7 @@ class InfoVC: UIViewController {
         self.add(childVC: repoItemVC, to: itemViewFirst)
         self.add(childVC: followerItemVC, to: itemViewSecond)
         self.add(childVC: GFUserInfoHeaderVC(user: user), to: headerView)
-        self.dateLabel.text = user.createdAt.convertToDisplayFormat()
+        self.dateLabel.text = user.createdAt.convertToMonthYearFormat()
     }
 
     func layoutUI() {
