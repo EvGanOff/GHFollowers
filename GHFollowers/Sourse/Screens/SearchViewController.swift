@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: GFDataLoadingVC {
 
     // MARK: - Properties
     let logoImageView = UIImageView()
@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     var isUserNameEturned: Bool {
         return userNameTextField.text?.isEmpty ?? false
     }
+    var logoImageViewTopConstraint: NSLayoutConstraint!
 
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -31,6 +32,7 @@ class SearchViewController: UIViewController {
     // MARK: - ViewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        userNameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -48,21 +50,22 @@ class SearchViewController: UIViewController {
 
         }
 
-        let followerVC = FollowerListViewController()
-        followerVC.userName = userNameTextField.text
-        followerVC.title = userNameTextField.text
+        userNameTextField.resignFirstResponder()
+
+        let followerVC = FollowerListViewController(userName: userNameTextField.text ?? "")
         navigationController?.pushViewController(followerVC, animated: true)
     }
 
     // MARK: - ConfigureViews
     func configureLogoImageView() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
-        logoImageView.image = UIImage(named: "gh-logo")
+        logoImageView.image = Images.mainLogo 
+
+        let topConstraintConstant: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 20 : 80
+        logoImageViewTopConstraint = logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintConstant)
+        logoImageViewTopConstraint.isActive = true
     
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: Constats.logoImageViewTopAnchor),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: Constats.logoImageViewHeightAndWidAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: Constats.logoImageViewHeightAndWidAnchor),
@@ -114,13 +117,12 @@ extension SearchViewController {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         pushFollowrListViewConrolller()
-        print("Did tap return")
         return true
     }
 }
 
 // MARK: - Constats and Metrics
-struct Constats {
+private struct Constats {
     static let logoImageViewTopAnchor: CGFloat = 80
     static let logoImageViewHeightAndWidAnchor: CGFloat = 200
 
@@ -134,3 +136,5 @@ struct Constats {
     static let actionButtonTrailingAnchor: CGFloat = -50
     static let actionButtonHeightAnchor: CGFloat = 50
 }
+
+

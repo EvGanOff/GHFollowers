@@ -11,20 +11,30 @@ protocol FollowerListVCDelegate: AnyObject {
     func didRequestFollowers(for userName: String)
 }
 
-class FollowerListViewController: UIViewController {
+class FollowerListViewController: GFDataLoadingVC {
 
     enum Section {
         case main
     }
 
     var followers: [Follower] = []
-    var userName: String! = nil
+    var userName: String? = nil
     var page = 1
     var filteredFollowers: [Follower] = []
     var hasMoreFollower = true
     var collectionView: UICollectionView!
     var collectionDataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     var isSearching = false
+
+    init(userName: String) {
+        super.init(nibName: nil, bundle: nil)
+        self.userName = userName
+        title = userName
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,7 +45,7 @@ class FollowerListViewController: UIViewController {
         super.viewDidLoad()
         configureViewController()
         configureCollectionCell()
-        getFollowers(userName: userName, page: page)
+        getFollowers(userName: userName ?? "", page: page)
         configureDataSource()
         configureSearchController()
     }
@@ -69,7 +79,7 @@ class FollowerListViewController: UIViewController {
         print("Add Button was tapped")
         //showLoadingView()
 
-        NetworkManager.shared.getUserInfo(userName: userName) { [weak self] result in
+        NetworkManager.shared.getUserInfo(userName: (userName ?? "")) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let user):
@@ -132,7 +142,7 @@ extension FollowerListViewController: UICollectionViewDelegate {
         if offsetY > contentHeigth - height {
             guard hasMoreFollower else { return }
             page += 1
-            getFollowers(userName: userName, page: page)
+            getFollowers(userName: (userName ?? ""), page: page)
         }
     }
 
